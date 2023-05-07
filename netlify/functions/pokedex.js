@@ -1,5 +1,5 @@
 //import fetch from 'node-fetch';
-
+//tai sao mode fetch khong chay???
 exports.handler = async function () {
     return {
         statusCode: 200,
