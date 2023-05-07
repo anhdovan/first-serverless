@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jamstack Explorers - Up and Running with Serverless Functions</title>
+</head>
+
+<body>
+<h1>Use react in this page</h1>
+  <h1>Up and Running with Serverless Functions</h1>
+  <h5><a href="rssreader.html">RSS reader</a></h5>
+  <button id="fetch-btn">Fetch</button>
+  <button id="fetch-pokedex-btn">Fetch Pokedex</button>
+  <button id="call-go-btn">Call go function</button>
+  <p id="response-output">Response Placeholder</p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fetchBtn = document.getElementById('fetch-btn')
+      const fetchPokedexBtn = document.getElementById('fetch-pokedex-btn')
+      const callgoBtn = document.getElementById('call-go-btn')
+      const responseText = document.getElementById('response-output')
+
+      fetchPokedexBtn.addEventListener('click', async () => {
+        const response = await fetch('/.netlify/functions/firstfunction').then(
+          response => response.json()
+        )
+
+        responseText.innerText = JSON.stringify(response)
+      })
+
+      fetchBtn.addEventListener('click', async () => {
+        const response = await fetch('/.netlify/functions/hello-world').then(
+          response => response.json()
+        )
+
+        responseText.innerText = JSON.stringify(response)
+      })
+
+      callgoBtn.addEventListener('click', async () => {
+        const response = await fetch('/.netlify/functions/hellogo').then(
+          response => response.json()
+        )
+
+        responseText.innerText = JSON.stringify(response)
+      })
+    })
+  </script>
+</body>
+
+</html>
